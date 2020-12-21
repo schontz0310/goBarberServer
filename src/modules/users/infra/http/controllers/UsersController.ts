@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import CreateUserService from '@modules/users/services/CreateUserService';
-
-import { container } from 'tsyringe';
 
 export default class UserssController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -18,7 +17,9 @@ export default class UserssController {
 
     // após criptografar a senha e salvala no banco de dados,
     // deletar a variavel para não exibir este dado sensivel no front end
-    delete user.password;
+    if (user.password) {
+      delete user.password;
+    }
 
     return response.json(user);
   }
