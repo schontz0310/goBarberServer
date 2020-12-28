@@ -8,7 +8,8 @@ export default class AppointmentsController {
     const { provider_id, date } = request.body;
     const user_id = request.user.id;
 
-    const parsedDate = parseISO(date);
+    const parsedDate = parseISO(date); // depois de implementar o celebrate foi precisso paasar a data direto
+    // const parsedDate = date;
 
     const createAppointment = container.resolve(CreateAppointmentService);
 

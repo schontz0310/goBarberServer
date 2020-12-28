@@ -5,7 +5,7 @@ import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointment
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
-import { getMonth, getYear } from 'date-fns';
+// import { getMonth, getYear } from 'date-fns';
 
 class AppointmentRepository implements IAppointmentsRepository {
   private ormRepository: Repository<Appointment>;
