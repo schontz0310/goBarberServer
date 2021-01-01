@@ -1,3 +1,8 @@
-/node_modules
-/tmp
-/src/config
+.vscode/
+node_modules/
+tmp/*
+!tmp/.gitkeep
+.env
+coverage/
+build/
+ormconfig.json

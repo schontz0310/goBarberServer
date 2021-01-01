@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
-import authConfig from '@config/Auth';
+import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
