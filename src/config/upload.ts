@@ -16,7 +16,7 @@ interface IUploadConfig {
   driver: 's3' | 'disk';
 
   config: {
-    disk: {};
+    disk: null;
     aws: {
       bucket: string;
     };
@@ -41,7 +41,7 @@ export default {
   },
 
   config: {
-    disk: {},
+    disk: null,
     aws: {
       bucket: 'ags-gobarber',
     },
