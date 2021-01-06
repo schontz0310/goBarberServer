@@ -66,7 +66,7 @@ class AppointmentRepository implements IAppointmentsRepository {
     const parsedDay = String(day).padStart(2, '0');
     const parsedMonth = String(month).padStart(2, '0');
 
-    const filterdAppointments = await this.ormRepository.find({
+    const filteredAppointments = await this.ormRepository.find({
       where: {
         provider_id,
         date: Raw(
@@ -76,7 +76,7 @@ class AppointmentRepository implements IAppointmentsRepository {
       },
     });
 
-    return filterdAppointments;
+    return filteredAppointments;
   }
 }
 
