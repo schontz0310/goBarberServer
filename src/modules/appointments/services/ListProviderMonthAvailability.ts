@@ -4,7 +4,7 @@
 import { injectable, inject } from 'tsyringe';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
-import { getDate, getDaysInMonth } from 'date-fns';
+import { getDate, getDaysInMonth, isAfter } from 'date-fns';
 
 interface IRequest {
   provider_id: string;
@@ -37,7 +37,7 @@ class ListProvidersMonthAvailabilityService {
       },
     );
 
-    const numberOfDaysInMounth = getDaysInMonth(new Date(year, month - 1));
+    const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
 
     /* const eachDayInMouth = Array.from(
       { length: numberOfDaysInMounth },
@@ -46,17 +46,19 @@ class ListProvidersMonthAvailabilityService {
 
     const eachDayInMouth: Array<number> = [];
 
-    for (let i = 1; i <= numberOfDaysInMounth; i++) {
+    for (let i = 1; i <= numberOfDaysInMonth; i++) {
       eachDayInMouth.push(i);
     }
 
     const availability = eachDayInMouth.map(day => {
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59);
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
       return {
         day,
-        available: appointmentsInDay.length < 10,
+        available:
+          isAfter(compareDate, new Date()) && appointmentsInDay.length < 10,
       };
     });
 
